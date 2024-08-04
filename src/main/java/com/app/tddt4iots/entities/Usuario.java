@@ -12,25 +12,31 @@ import java.util.List;
 public class Usuario {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Cambiado a Identity para PostgreSQL
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
  
-    @Column(name = "idUsuario", nullable = true, unique = true, length = 30) 
-    private String idUsuario; 
+    @Column(name = "usuario", nullable = true, unique = true, length = 30)
+    private String usuario; 
  
-    @Column(name = "nombre", nullable = false, length = 30) 
-    private String nombre; 
+    @Column(name = "nombres", nullable = false, length = 30) 
+    private String nombres;
+    
+    @Column(name = "apellidos", nullable = true, length = 50)
+    private String apellidos; 
  
-    @Column(name = "email", nullable = false, unique = true, length = 50)  // Aumentado el tamaño del email
-    private String email; 
- 
+    @Column(name = "email", nullable = false, unique = true, length = 50)
+    private String email;
+
+    @Column(name = "contrasena", nullable = false, length = 60)
+    private String contrasena;
+
     @Column(name = "rol", nullable = false, length = 30) 
     private String rol; 
  
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)  // Corregido para mapear correctamente con Traduccion
-    private List<Traduccion> traducciones;  // Renombrado a traducciones para pluralidad
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Traduccion> traducciones;
 
-    @OneToOne(fetch = FetchType.LAZY)  // Asegúrate de incluir FetchType.LAZY
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idHistorial", referencedColumnName = "id") 
     private Historial historial; 
 }
