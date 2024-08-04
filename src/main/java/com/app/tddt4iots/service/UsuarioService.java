@@ -4,4 +4,5 @@ import com.app.tddt4iots.entities.Usuario;
 
 public interface UsuarioService {
     Usuario registrarUsuario(Usuario usuario);
+    Usuario autenticarUsuario(String usuario, String contrasena);
 }
