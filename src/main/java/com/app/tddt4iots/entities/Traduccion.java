@@ -14,9 +14,6 @@ public class Traduccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Cambiado a Identity para PostgreSQL
     private Long id;
 
-    @Column(name = "idTraduccion", nullable = true, unique = true, length = 30) 
-    private String idTraduccion; 
-
     @Column(name = "textoTraducido", nullable = false, length = 100)  // Aumentado el tamaño del texto
     private String textoTraducido; 
 
